@@ -8,6 +8,8 @@ import PostListPage from '../PostListPage/PostListPage';
 import NewPostPage from '../NewPostPage/NewPostPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
+import ClubListPage from '../ClubListPage/ClubListPage';
+
 
 function App() {
   const [user, setUser] = useState(getUser());

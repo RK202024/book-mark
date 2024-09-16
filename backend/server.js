@@ -2,7 +2,7 @@ const path = require('path'); // Built into Node
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const hootsRouter = require('./controllers/hoots.js');
+
 
 // Process the secrets/config vars in .env
 require('dotenv').config();
@@ -30,10 +30,11 @@ app.use(require('./middleware/checkToken'));
 app.use('/api/auth', require('./routes/auth'));
 const ensureLoggedIn = require('./middleware/ensureLoggedIn');
 
-app.use('/hoots', hootsRouter);
+// Club routes for managing API calls
+app.use('/api/clubs', require('./routes/clubs')); 
 
 
-app.use('/api/hoots', hootsRouter);
+
 // Remember to use ensureLoggedIn middleware when mounting
 // routes and/or within the route modules to protect routes
 // that require a logged in user either

@@ -14,6 +14,8 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       {user ? (
         <>
+          <Link to="/clubs">Clubs</Link>  
+          &nbsp; | &nbsp;
           <Link to="/posts">Post List</Link>
           &nbsp; | &nbsp;
           <Link to="/posts/new">New Post</Link>
