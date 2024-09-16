@@ -6,5 +6,6 @@ const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 // POST /api/clubs/create
 router.post('/create', ensureLoggedIn, clubsCtrl.create);
 router.get('/', ensureLoggedIn, clubsCtrl.index);
+router.get('/:id', ensureLoggedIn, clubsCtrl.show);
 
 module.exports = router;

@@ -3,6 +3,7 @@ const Club = require('../models/club');
 module.exports = {
   create,
   index,
+  show,
 };
 
 async function create(req, res) {
@@ -20,5 +21,15 @@ async function index(req, res) {
       res.json(clubs); // Send back the list of clubs as JSON
     } catch (err) {
       res.status(400).json({ message: 'Error fetching clubs' });
+    }
+  }
+
+  // Fetch a single club by ID
+async function show(req, res) {
+    try {
+      const club = await Club.findById(req.params.id).populate('owner members'); // Populate related fields
+      res.json(club);
+    } catch (err) {
+      res.status(400).json({ message: 'Error fetching club' });
     }
   }

@@ -23,6 +23,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
+            <Route path="/clubs" element={<ClubListPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (
