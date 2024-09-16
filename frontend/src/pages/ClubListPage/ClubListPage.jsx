@@ -56,7 +56,7 @@ export default function ClubListPage() {
         {sortClubs(clubs, sortBy).map((club) => (
           <li key={club._id}>
             {club.name}
-            {/* Add "Club Details" link */}
+            <button>View Details</button> 
             <Link to={`/clubs/${club._id}`}>View Details</Link>
           </li>
         ))}

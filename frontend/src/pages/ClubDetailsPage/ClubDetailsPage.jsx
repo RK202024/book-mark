@@ -20,8 +20,8 @@ export default function ClubDetailsPage() {
   return (
     <div>
       <h1>{club.name}</h1>
-      <p>Owner: {club.owner.name}</p>
-      <p>Members: {club.members.length}</p>
+      <p>Owner: {club.owner ? club.owner.name : 'Unknown'}</p>
+      <p>Members: {club.members ? club.members.length : 0}</p>
       <ul>
         {club.members.map((member) => (
           <li key={member._id}>{member.name}</li>

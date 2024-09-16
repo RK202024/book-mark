@@ -7,6 +7,7 @@ import HomePage from '../HomePage/HomePage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import ClubListPage from '../ClubListPage/ClubListPage';
+import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage'; 
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/clubs" element={<ClubListPage />} />
+            <Route path="/clubs/:id" element={<ClubDetailsPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (

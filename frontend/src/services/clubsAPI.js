@@ -9,3 +9,7 @@ export function add(clubData) {
 export function getById(id) {
     return sendRequest(`${BASE_URL}/${id}`);
   }
+
+export function getAll() {
+  return sendRequest(BASE_URL);
+}  
