@@ -25,7 +25,7 @@ export default function LogInPage({ setUser }) {
   }
 
   return (
-    <>
+    <div id="app-content"> 
       <h2>Log In!</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Email</label>
@@ -47,6 +47,6 @@ export default function LogInPage({ setUser }) {
         <button type="submit">LOG IN</button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+      </div>
   );
 }

@@ -30,7 +30,7 @@ export default function SignUpPage({ setUser }) {
   const disable = formData.password !== formData.confirm;
 
   return (
-    <>
+    <div id="app-content"> 
       <h2>Sign Up!</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Name</label>
@@ -70,6 +70,6 @@ export default function SignUpPage({ setUser }) {
         </button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
-    </>
+      </div>
   );
 }

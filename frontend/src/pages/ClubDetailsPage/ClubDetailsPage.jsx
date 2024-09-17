@@ -18,7 +18,7 @@ export default function ClubDetailsPage() {
   if (!club) return <h2>Loading...</h2>; // Show loading message while data is fetched
 
   return (
-    <div>
+    <div id="app-content"> 
       <h1>{club.name}</h1>
       <p>Owner: {club.owner ? club.owner.name : 'Unknown'}</p>
       <p>Members: {club.members ? club.members.length : 0}</p>

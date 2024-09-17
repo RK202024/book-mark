@@ -43,7 +43,7 @@ export default function ClubListPage() {
       <CreateClubForm handleAddClub={handleAddClub} />
 
       {/* Dropdown to select sorting option */}
-      <div>
+      <div id="app-content"> 
         <label htmlFor="sort">Sort by: </label>
         <select id="sort" value={sortBy} onChange={handleSortChange}>
           <option value="name">Name</option>
