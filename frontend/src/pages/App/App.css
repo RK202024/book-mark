@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;  /* Ensure it stays on top */
 }
 
 #app-content {
@@ -43,6 +44,7 @@
   padding: 0;  
   overflow: hidden; 
   position: relative;
+  z-index: 1;  /* Ensure home-page stays on top */
 }
 
 .button-container {
@@ -50,6 +52,7 @@
   bottom: 30px;  
   display: flex;
   gap: 50px;  
+  z-index: 2;  /* Ensure buttons are on top */
 }
 
 button, .home-button {
@@ -61,8 +64,10 @@ button, .home-button {
   font-size: 18px;                 /* Larger text */
   font-weight: bold;               /* Bold text */
   cursor: pointer;
-  text-decoration: none;           /* Remove underline for links */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  text-decoration: none;          
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 3;  /* Ensure buttons stay on top */
+  pointer-events: auto;  /* Ensure buttons are clickable */
 }
 
 button:hover, .home-button:hover {

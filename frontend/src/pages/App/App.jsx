@@ -9,7 +9,6 @@ import LogInPage from '../LogInPage/LogInPage';
 import ClubListPage from '../ClubListPage/ClubListPage';
 import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage'; 
 
-
 function App() {
   const [user, setUser] = useState(getUser());
 
@@ -29,6 +28,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
+            <Route path="/clubs" element={<Navigate to="/login" />} />
+            <Route path="/clubs/:id" element={<Navigate to="/login" />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         )}
