@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { getUser } from '../../services/authService';
 import './App.css';
@@ -11,6 +11,14 @@ import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage';
 
 function App() {
   const [user, setUser] = useState(getUser());
+
+  useEffect(() => {
+    const loggedInUser = getUser();
+    console.log('User from authService:', loggedInUser); 
+    setUser(loggedInUser);
+  }, []);
+
+  console.log('Current user state:', user); 
 
   return (
     <main id="react-app">
@@ -28,6 +36,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
+            {/* Redirect to login page if not authenticated */}
             <Route path="/clubs" element={<Navigate to="/login" />} />
             <Route path="/clubs/:id" element={<Navigate to="/login" />} />
             <Route path="*" element={<Navigate to="/" />} />

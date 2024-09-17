@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
 
 export default function LogInPage({ setUser }) {
@@ -7,14 +8,15 @@ export default function LogInPage({ setUser }) {
     password: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate(); 
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       const user = await authService.logIn(formData);
       setUser(user);
+      navigate('/clubs'); // Redirect to ClubListPage after login
     } catch (err) {
-      // An error occurred
       setErrorMsg('Log In Failed - Try Again');
     }
   }
@@ -25,7 +27,7 @@ export default function LogInPage({ setUser }) {
   }
 
   return (
-    <div id="app-content"> 
+    <div id="app-content">
       <h2>Log In!</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Email</label>
@@ -47,6 +49,6 @@ export default function LogInPage({ setUser }) {
         <button type="submit">LOG IN</button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
-      </div>
+    </div>
   );
 }

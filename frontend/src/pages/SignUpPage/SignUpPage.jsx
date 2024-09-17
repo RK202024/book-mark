@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
 
 export default function SignUpPage({ setUser }) {
@@ -9,14 +10,15 @@ export default function SignUpPage({ setUser }) {
     confirm: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       const user = await authService.signUp(formData);
       setUser(user);
+      navigate('/clubs'); 
     } catch (err) {
-      // An error occurred
       console.log(err);
       setErrorMsg('Sign Up Failed - Try Again');
     }
@@ -30,7 +32,7 @@ export default function SignUpPage({ setUser }) {
   const disable = formData.password !== formData.confirm;
 
   return (
-    <div id="app-content"> 
+    <div id="app-content">
       <h2>Sign Up!</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Name</label>
@@ -70,6 +72,6 @@ export default function SignUpPage({ setUser }) {
         </button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
-      </div>
+    </div>
   );
 }
