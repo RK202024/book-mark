@@ -15,7 +15,7 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(logger('dev'));
-// Serve static assets from the frontend's built code folder (dist)
+// Serve static assets from the frontend's built code folder 
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 // Note that express.urlencoded middleware is not needed
 // because forms are not submitted!

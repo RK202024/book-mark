@@ -1,3 +1,13 @@
+import { Link } from 'react-router-dom';
+
 export default function HomePage() {
-  return <h1>Home Page</h1>;
+  return (
+    <div id="home-page">
+      {/* Buttons at the bottom */}
+      <div className="button-container">
+        <Link to="/login" className="home-button">Log In</Link>
+        <Link to="/signup" className="home-button">Sign Up</Link>
+      </div>
+    </div>
+  );
 }

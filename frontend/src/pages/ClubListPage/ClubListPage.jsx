@@ -54,10 +54,11 @@ export default function ClubListPage() {
       {/* Render sorted list of clubs */}
       <ul>
         {sortClubs(clubs, sortBy).map((club) => (
-          <li key={club._id}>
-            {club.name}
-            <button>View Details</button> 
-            <Link to={`/clubs/${club._id}`}>View Details</Link>
+          <li key={club._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>{club.name}</span>
+            <Link to={`/clubs/${club._id}`}>
+              <button>View Details</button> 
+            </Link>
           </li>
         ))}
       </ul>

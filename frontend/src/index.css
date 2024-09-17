@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -26,21 +30,22 @@ h1, h2 {
 }
 
 button {
-  border: 0.5vmin solid #1a1a1a;
-  border-radius: 0.5vmin;
-  padding: 0.8vmin;
-  font-size: 2vmin;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: whitesmoke;
+  background-color: transparent;  
+  color: white;                   /* Text */
+  border: 2px solid white;         
+  border-radius: 8px;      /* Rounded corners */
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
 }
+
 button:hover {
-  background-color: white;
-  color: #1a1a1a;
-  border-color: #1a1a1a;
+  background-color: white;         /* White background on hover */
+  color: #004aad;                  /* Text color changes on hover */
 }
+
 button:disabled {
   background-color: grey;
 }
