@@ -4,7 +4,8 @@ module.exports = {
   create,
   index,
   show,
-  joinClub, 
+  joinClub,
+  delete: deleteClub, 
 };
 
 async function create(req, res) {
@@ -34,7 +35,6 @@ async function show(req, res) {
   }
 }
 
-// Function to handle joining a club
 async function joinClub(req, res) {
   try {
     const { id } = req.params;
@@ -51,6 +51,19 @@ async function joinClub(req, res) {
     }
 
     res.status(200).json(club);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+async function deleteClub(req, res) {
+  try {
+    const { id } = req.params;
+
+    const club = await Club.findByIdAndDelete(id);
+    if (!club) return res.status(404).json({ message: 'Club not found' });
+
+    res.status(200).json({ message: 'Club deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

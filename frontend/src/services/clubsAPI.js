@@ -21,3 +21,8 @@ export function getAll() {
 export function joinClub(clubId, userId) {
   return sendRequest(`${BASE_URL}/${clubId}/join`, 'POST', { userId });
 }
+
+// Manager delete club
+export async function deleteClub(id) {
+  return sendRequest(`/api/clubs/${id}`, 'DELETE');
+}
