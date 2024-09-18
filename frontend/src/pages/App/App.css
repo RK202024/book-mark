@@ -1,6 +1,7 @@
 #react-app {
   display: grid;
   grid-template-rows: auto auto;
+  min-height: 100vh; 
 }
 
 #main-section {
@@ -8,17 +9,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;  /* Ensure it stays on top */
+  z-index: 1; 
 }
 
-#app-content {
+#sign-up-page {
   height: 100vh;               
   width: 100vw;                
-  background-image: url('/images/background.png');  /* Background image for other pages */
+  background-image: url('/images/background.png');  
   background-size: cover;       
-  background-position: center; 
+  background-position: center;  
   background-repeat: no-repeat; 
-  background-attachment: fixed;
+  background-attachment: fixed; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,51 +29,112 @@
   padding: 0;
 }
 
-#home-page {
-  height: 100vh;  
-  width: 100vw;   
-  background-image: url('/images/homepage.png');  
-  background-size: cover;  
-  background-position: center; 
+#club-detail-page {
+  height: 100vh;               
+  width: 100vw;                
+  background-image: url('/images/background.png');  
+  background-size: cover;       
+  background-position: center;  
   background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;  
+  margin: 0;
+  padding: 0;
+  }
+
+#log-in-page {
+  height: 100vh;               
+  width: 100vw;                
+  background-image: url('/images/background.png');  
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;  
+  margin: 0;
+  padding: 0;
+}
+
+#club-index-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#home-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/images/homepage.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;  
-  margin: 0;  
-  padding: 0;  
-  overflow: hidden; 
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   position: relative;
-  z-index: 1;  /* Ensure home-page stays on top */
+  z-index: 1; 
+}
+
+#app-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; 
+  padding: 20px;
 }
 
 .button-container {
   position: absolute;
-  bottom: 30px;  
+  bottom: 30px;
   display: flex;
-  gap: 50px;  
-  z-index: 2;  /* Ensure buttons are on top */
+  gap: 50px;
+  z-index: 2; 
 }
 
 button, .home-button {
-  background-color: transparent;  /* Transparent background */
-  color: white;                   /* Text color */
-  border: 2px solid white;         /* White border */
-  border-radius: 8px;              /* Rounded corners */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Text color */
+  border: 2px solid white; /* White border */
+  border-radius: 8px; /* Rounded corners */
   padding: 10px 20px;
-  font-size: 18px;                 /* Larger text */
-  font-weight: bold;               /* Bold text */
+  font-size: 18px; /* Larger text */
+  font-weight: bold; /* Bold text */
   cursor: pointer;
-  text-decoration: none;          
+  text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  z-index: 3;  /* Ensure buttons stay on top */
-  pointer-events: auto;  /* Ensure buttons are clickable */
+  z-index: 3; 
+  pointer-events: auto; /* Ensure buttons are clickable */
 }
 
 button:hover, .home-button:hover {
-  background-color: white;         
-  color: #004aad;                  
+  background-color: white;
+  color: #004aad;
 }
 
 button:disabled {

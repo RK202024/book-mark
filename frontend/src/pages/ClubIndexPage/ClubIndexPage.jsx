@@ -1,17 +1,22 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import CreateClubForm from '../../components/CreateClubForm/CreateClubForm';
 import * as clubsAPI from '../../services/clubsAPI';
 import { Link } from 'react-router-dom';
 
-export default function ClubListPage() {
+export default function ClubIndexPage() {
   const [clubs, setClubs] = useState([]);
   const [sortBy, setSortBy] = useState('name'); 
 
   // Fetch all clubs when the component first renders
   useEffect(() => {
     async function getClubs() {
-      const clubs = await clubsAPI.getAll(); // Fetch the list of clubs
-      setClubs(clubs);
+      try {
+        const clubs = await clubsAPI.getAll(); // Fetch the list of clubs
+        setClubs(clubs);
+      } catch (error) {
+        console.error('Error fetching clubs:', error);
+      }
     }
     getClubs();
   }, []); // Empty array ensures this runs only once on mount
@@ -36,13 +41,9 @@ export default function ClubListPage() {
   }
 
   return (
-    <div>
+    <div id="club-index-page">
       <h1>Club Index</h1>
-
-      {'Create New Club'}
       <CreateClubForm handleAddClub={handleAddClub} />
-
-      {/* Dropdown to select sorting option */}
       <div id="app-content"> 
         <label htmlFor="sort">Sort by: </label>
         <select id="sort" value={sortBy} onChange={handleSortChange}>
@@ -50,8 +51,6 @@ export default function ClubListPage() {
           <option value="recent">Most Recently Created</option>
         </select>
       </div>
-
-      {/* Render sorted list of clubs */}
       <ul>
         {sortClubs(clubs, sortBy).map((club) => (
           <li key={club._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

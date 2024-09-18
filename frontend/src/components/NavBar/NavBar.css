@@ -1,10 +1,31 @@
 .NavBar {
   display: flex;
+  background-color: #0097b2;
   justify-content: space-around;
   align-items: center;
   padding: 2vmin;
+  position: relative; 
+  z-index: 2; 
 }
 
 .NavBar span {
-  color: rgb(108, 9, 87);
+  color: white; 
+}
+
+.NavBar a {
+  color: white; 
+  background-color: transparent;
+  border: 2px solid white; 
+  border-radius: 8px; 
+  padding: 10px 20px;
+  font-size: 18px; 
+  font-weight: bold; 
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.NavBar a:hover {
+  background-color: white;
+  color: #004aad;
 }

@@ -1,41 +1,32 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'; 
+import { useLocation, useNavigate } from 'react-router-dom'; 
 import * as authService from '../../services/authService';
 import './NavBar.css';
 
 export default function NavBar({ user, setUser }) {
-  const location = useLocation(); // Get the current location
-  const navigate = useNavigate(); // useNavigate for redirection
+  const location = useLocation();
+  const navigate = useNavigate();
 
   function handleLogOut() {
     authService.logOut();
     setUser(null);
-    navigate('/login'); // Redirect to login after logging out
+    navigate('/'); 
   }
 
-  // Hide 'Home', 'Log In', and 'Sign Up' links on the Home page
-  if (location.pathname === '/' && !user) {
-    return null; // Return nothing to remove NavBar on the Home page if no user is logged in
+  if (location.pathname === '/') {
+    return null;
   }
 
   return (
     <nav className="NavBar">
       {user ? (
         <>
-          <Link to="/clubs">Clubs</Link>  
-          &nbsp; | &nbsp;
-          <Link to="" onClick={handleLogOut}>
+          <button onClick={handleLogOut} className="NavBar a">
             Log Out
-          </Link>
+          </button>
           &nbsp;&nbsp;
           <span>Welcome, {user.name}</span>
         </>
-      ) : (
-        <>
-          <Link to="/login">Log In</Link>
-          &nbsp; | &nbsp;
-          <Link to="/signup">Sign Up</Link>
-        </>
-      )}
+      ) : null}
     </nav>
   );
 }
