@@ -31,3 +31,9 @@ export function deleteClub(id) {
 export function suggestBook(clubId, bookData) {
   return sendRequest(`${BASE_URL}/${clubId}/suggest`, 'POST', bookData);
 }
+
+// Leave a club
+export function leaveClub(clubId, userId) {
+  return sendRequest(`${BASE_URL}/${clubId}/leave`, 'POST', { userId });
+}
+

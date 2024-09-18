@@ -34,11 +34,19 @@ export default function ClubDetailsPage() {
   async function handleJoin() {
     const user = authService.getUser();
     if (user) {
-      await clubsAPI.joinClub(id, user._id);
-      setIsMember(true);
-      navigate(`/clubs/${id}/welcome`);
+      if (isMember) {
+        // User is leaving the club
+        await clubsAPI.leaveClub(id, user._id); 
+        navigate('/clubs/goodbye'); // Redirect to Goodbye Page
+      } else {
+        // User is joining the club
+        await clubsAPI.joinClub(id, user._id);
+        setIsMember(true);
+        navigate(`/clubs/${id}/welcome`);
+      }
     }
   }
+  
 
   async function handleDelete() {
     try {

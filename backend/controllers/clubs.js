@@ -6,6 +6,7 @@ module.exports = {
   index,
   show,
   joinClub,
+  leaveClub,
   delete: deleteClub, 
   suggestBook,
 };
@@ -96,3 +97,23 @@ async function suggestBook(req, res) {
     res.status(400).json({ message: error.message });
   }
 }
+
+async function leaveClub(req, res) {
+  try {
+    const { id } = req.params; // Club ID from the URL
+    const { userId } = req.body; // User ID
+
+    // Find the club by ID
+    const club = await Club.findById(id);
+    if (!club) return res.status(404).json({ message: 'Club not found' });
+
+    // Remove the user from the club's members array
+    club.members = club.members.filter(member => member.toString() !== userId);
+    await club.save();
+
+    res.status(200).json(club); // Return the updated club
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+

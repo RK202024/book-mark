@@ -9,6 +9,7 @@ import LogInPage from '../LogInPage/LogInPage';
 import ClubIndexPage from '../ClubIndexPage/ClubIndexPage'; 
 import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage'; 
 import ClubWelcomePage from '../ClubWelcomePage/ClubWelcomePage';
+import GoodbyePage from '../GoodbyePage/GoodbyePage';
 
 function App() {
   const [user, setUser] = useState(null); // Default to null to handle loading state
@@ -43,6 +44,7 @@ function App() {
               <Route path="/clubs" element={<ClubIndexPage />} /> 
               <Route path="/clubs/:id" element={<ClubDetailsPage />} />
               <Route path="/clubs/:id/welcome" element={<ClubWelcomePage />} />
+              <Route path="/clubs/goodbye" element={<GoodbyePage />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (

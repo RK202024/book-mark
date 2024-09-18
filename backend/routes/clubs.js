@@ -5,12 +5,23 @@ const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 
 // POST /api/clubs/create
 router.post('/create', ensureLoggedIn, clubsCtrl.create);
+
+// GET all clubs
 router.get('/', ensureLoggedIn, clubsCtrl.index);
+
+// GET a specific club
 router.get('/:id', ensureLoggedIn, clubsCtrl.show);
+
+// POST to join a club
 router.post('/:id/join', ensureLoggedIn, clubsCtrl.joinClub);
+
+// POST to leave a club
+router.post('/:id/leave', ensureLoggedIn, clubsCtrl.leaveClub);
+
+// DELETE a club
 router.delete('/:id', ensureLoggedIn, clubsCtrl.delete);
 
-// POST /api/clubs/:id/books/suggest
-router.post('/:id/suggest', clubsCtrl.suggestBook);
+// POST to suggest a book for a club
+router.post('/:id/suggest', ensureLoggedIn, clubsCtrl.suggestBook);
 
 module.exports = router;
