@@ -28,17 +28,17 @@ function App() {
     fetchUser();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>; // Show a loading message or spinner while user state is being fetched
-  }
-
   return (
     <main id="react-app">
       <NavBar user={user} setUser={setUser} />
       <section id="main-section">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {user ? (
+          {loading ? (
+            // Show loading message or spinner for routes that depend on user state
+            <Route path="*" element={<div>Loading...</div>} />
+          ) : user ? (
+            // Authenticated routes
             <>
               <Route path="/clubs" element={<ClubIndexPage />} /> 
               <Route path="/clubs/:id" element={<ClubDetailsPage />} />
@@ -46,6 +46,7 @@ function App() {
               <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (
+            // Unauthenticated routes
             <>
               <Route path="/login" element={<LogInPage setUser={setUser} />} />
               <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
