@@ -11,6 +11,6 @@ router.post('/:id/join', ensureLoggedIn, clubsCtrl.joinClub);
 router.delete('/:id', ensureLoggedIn, clubsCtrl.delete);
 
 // POST /api/clubs/:id/books/suggest
-router.post('/:id/books/suggest', ensureLoggedIn, clubsCtrl.suggestBook);
+router.post('/:id/suggest', clubsCtrl.suggestBook);
 
 module.exports = router;

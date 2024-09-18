@@ -23,21 +23,11 @@ export function joinClub(clubId, userId) {
 }
 
 // Manager delete club
-export async function deleteClub(id) {
-  return sendRequest(`/api/clubs/${id}`, 'DELETE');
+export function deleteClub(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
-export async function suggestBook(clubId, bookData) {
-  const response = await fetch(`${BASE_URL}/${clubId}/books/suggest`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(bookData),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to suggest book');
-  }
-  const newBook = await response.json();
-  return newBook;
+// Suggest a book for a specific club
+export function suggestBook(clubId, bookData) {
+  return sendRequest(`${BASE_URL}/${clubId}/suggest`, 'POST', bookData);
 }

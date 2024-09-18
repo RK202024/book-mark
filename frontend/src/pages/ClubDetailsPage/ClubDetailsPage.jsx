@@ -14,13 +14,18 @@ export default function ClubDetailsPage() {
 
   useEffect(() => {
     async function getClubDetails() {
-      const clubData = await clubsAPI.getById(id);
-      setClub(clubData);
-      setBooks(clubData.books || []); // Initialize books state with the club's books
-      const user = authService.getUser();
-      if (user) {
-        setIsMember(clubData.members.some(member => member._id === user._id));
-        setIsManager(clubData.owner._id === user._id);
+      try {
+        const clubData = await clubsAPI.getById(id);
+        setClub(clubData);
+        setBooks(clubData.books || []); // Initialize books state with the club's books
+        const user = authService.getUser();
+        if (user) {
+          setIsMember(clubData.members.some(member => member._id === user._id));
+          setIsManager(clubData.owner._id === user._id);
+        }
+      } catch (error) {
+        console.error('Failed to fetch club details', error); // Log any errors
+        setClub(null); // Stop loading state by setting club to null
       }
     }
     getClubDetails();
@@ -51,7 +56,7 @@ export default function ClubDetailsPage() {
       setBooks([...books, suggestedBook]); // Update the books state with the new book
       setNewBook({ title: '', author: '' }); // Clear the form
     } catch (error) {
-      console.error('Failed to suggest book', error); //CONSOLE LOG
+      console.error('Failed to suggest book', error);
     }
   }
 
@@ -60,6 +65,7 @@ export default function ClubDetailsPage() {
     setNewBook({ ...newBook, [name]: value });
   }
 
+  if (club === null) return <h2>Unable to load club details. Please try again later.</h2>;
   if (!club) return <h2>Loading...</h2>;
 
   return (
@@ -68,7 +74,7 @@ export default function ClubDetailsPage() {
         <h1>{club.name}</h1>
         <p>Manager: {club.owner ? club.owner.name : 'Unknown'}</p>
         <p>Members: {club.members ? club.members.length : 0}</p>
-        <h2>Books</h2>
+        <h2>Suggested Books</h2>
         <ul>
           {books.length ? books.map((book, index) => (
             <li key={index}>{book.title} by {book.author}</li>
