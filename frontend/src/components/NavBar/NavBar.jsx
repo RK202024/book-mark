@@ -20,7 +20,7 @@ export default function NavBar({ user, setUser }) {
     <nav className="NavBar">
       {user ? (
         <>
-          <button onClick={handleLogOut} className="NavBar a">
+          <button onClick={handleLogOut} className="NavBar-button">
             Log Out
           </button>
           &nbsp;&nbsp;

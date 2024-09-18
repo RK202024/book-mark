@@ -54,7 +54,7 @@ export default function ClubIndexPage() {
       <ul>
         {sortClubs(clubs, sortBy).map((club) => (
           <li key={club._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>{club.name}</span>
+            <span className="club-name">{club.name}</span> 
             <Link to={`/clubs/${club._id}`}>
               <button>View Details</button> 
             </Link>

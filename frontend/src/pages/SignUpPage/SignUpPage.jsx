@@ -33,6 +33,10 @@ export default function SignUpPage({ setUser }) {
 
   return (
     <div id="sign-up-page">
+      <div className="nav-bar">
+        <button onClick={() => navigate('/log-in')}>Log In</button>
+        <button onClick={() => navigate('/')}>Home</button>
+      </div>
       <div id="app-content">
         <h2>Sign Up!</h2>
         <form autoComplete="off" onSubmit={handleSubmit}>

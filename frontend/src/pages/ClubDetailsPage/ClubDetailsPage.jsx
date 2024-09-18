@@ -37,7 +37,6 @@ export default function ClubDetailsPage() {
       await clubsAPI.deleteClub(id);
       navigate('/clubs'); // Navigate back to the Club Index Page
     } catch (error) {
-      console.error('Error deleting club:', error); // ERASE console log
     }
   }
 

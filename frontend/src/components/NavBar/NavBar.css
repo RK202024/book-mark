@@ -1,25 +1,28 @@
 .NavBar {
   display: flex;
-  background-color: #0097b2;
-  justify-content: space-around;
+  background-color: #002f4b; 
+  justify-content: space-between;
   align-items: center;
-  padding: 2vmin;
-  position: relative; 
-  z-index: 2; 
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
 }
 
 .NavBar span {
-  color: white; 
+  color: white;
 }
 
 .NavBar a {
-  color: white; 
+  color: white;
   background-color: transparent;
-  border: 2px solid white; 
-  border-radius: 8px; 
+  border: none; 
+  border-radius: 8px;
   padding: 10px 20px;
-  font-size: 18px; 
-  font-weight: bold; 
+  font-size: 18px;
+  font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
@@ -27,5 +30,5 @@
 
 .NavBar a:hover {
   background-color: white;
-  color: #004aad;
+  color: #002f4b; 
 }
