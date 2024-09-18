@@ -11,12 +11,26 @@ import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage';
 import ClubWelcomePage from '../ClubWelcomePage/ClubWelcomePage';
 
 function App() {
-  const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(null); // Default to null to handle loading state
+  const [loading, setLoading] = useState(true); // Track loading state
 
   useEffect(() => {
-    const loggedInUser = getUser();
-    setUser(loggedInUser);
+    const fetchUser = async () => {
+      try {
+        const loggedInUser = await getUser();
+        setUser(loggedInUser);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      } finally {
+        setLoading(false); // Always set loading to false
+      }
+    };
+    fetchUser();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading message or spinner while user state is being fetched
+  }
 
   return (
     <main id="react-app">

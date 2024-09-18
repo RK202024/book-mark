@@ -8,16 +8,19 @@ export default function ClubDetailsPage() {
   const [club, setClub] = useState(null);
   const [isMember, setIsMember] = useState(false);
   const [isManager, setIsManager] = useState(false);
+  const [newBook, setNewBook] = useState({ title: '', author: '' });
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getClubDetails() {
-      const club = await clubsAPI.getById(id);
-      setClub(club);
+      const clubData = await clubsAPI.getById(id);
+      setClub(clubData);
+      setBooks(clubData.books || []); // Initialize books state with the club's books
       const user = authService.getUser();
       if (user) {
-        setIsMember(club.members.some(member => member._id === user._id));
-        setIsManager(club.owner._id === user._id); // Determine if the user is the manager
+        setIsMember(clubData.members.some(member => member._id === user._id));
+        setIsManager(clubData.owner._id === user._id);
       }
     }
     getClubDetails();
@@ -35,9 +38,26 @@ export default function ClubDetailsPage() {
   async function handleDelete() {
     try {
       await clubsAPI.deleteClub(id);
-      navigate('/clubs'); // Navigate back to the Club Index Page
+      navigate('/clubs');
     } catch (error) {
+      console.error(error);
     }
+  }
+
+  async function handleSuggestBook(evt) {
+    evt.preventDefault();
+    try {
+      const suggestedBook = await clubsAPI.suggestBook(id, newBook);
+      setBooks([...books, suggestedBook]); // Update the books state with the new book
+      setNewBook({ title: '', author: '' }); // Clear the form
+    } catch (error) {
+      console.error('Failed to suggest book', error); //CONSOLE LOG
+    }
+  }
+
+  function handleBookChange(evt) {
+    const { name, value } = evt.target;
+    setNewBook({ ...newBook, [name]: value });
   }
 
   if (!club) return <h2>Loading...</h2>;
@@ -46,18 +66,49 @@ export default function ClubDetailsPage() {
     <div id="club-details-page"> 
       <div id="app-content">
         <h1>{club.name}</h1>
-        <p>Manager: {club.owner ? club.owner.name : 'Unknown'}</p> 
+        <p>Manager: {club.owner ? club.owner.name : 'Unknown'}</p>
         <p>Members: {club.members ? club.members.length : 0}</p>
+        <h2>Books</h2>
         <ul>
-          {club.members.map((member) => (
-            <li key={member._id}>{member.name}</li>
-          ))}
+          {books.length ? books.map((book, index) => (
+            <li key={index}>{book.title} by {book.author}</li>
+          )) : <p>No books yet</p>}
         </ul>
-        {!isMember && (
+        {isManager && (
+          <form onSubmit={handleSuggestBook}>
+            <h3>Suggest a Book</h3>
+            <label>
+              Title:
+              <input
+                type="text"
+                name="title"
+                value={newBook.title}
+                onChange={handleBookChange}
+                required
+              />
+            </label>
+            <br />
+            <label>
+              Author:
+              <input
+                type="text"
+                name="author"
+                value={newBook.author}
+                onChange={handleBookChange}
+                required
+              />
+            </label>
+            <br />
+            <button type="submit">Suggest Book</button>
+          </form>
+        )}
+        {isMember ? (
+          <button onClick={handleJoin}>Leave Club</button>
+        ) : (
           <button onClick={handleJoin}>Join Club</button>
         )}
         {isManager && (
-          <button onClick={handleDelete}>Delete Club</button> 
+          <button onClick={handleDelete}>Delete Club</button>
         )}
       </div>
     </div>

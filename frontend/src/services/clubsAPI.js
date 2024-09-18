@@ -26,3 +26,18 @@ export function joinClub(clubId, userId) {
 export async function deleteClub(id) {
   return sendRequest(`/api/clubs/${id}`, 'DELETE');
 }
+
+export async function suggestBook(clubId, bookData) {
+  const response = await fetch(`${BASE_URL}/${clubId}/books/suggest`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bookData),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to suggest book');
+  }
+  const newBook = await response.json();
+  return newBook;
+}

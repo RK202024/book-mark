@@ -26,8 +26,15 @@ export default function LogInPage({ setUser }) {
     setErrorMsg('');
   }
 
+  function handleHomeClick() {
+    navigate('/'); 
+  }
+
   return (
     <div id="log-in-page"> 
+      <div className="nav-bar">
+        <button className="home-button" onClick={handleHomeClick}>Home</button>
+      </div>
       <div id="app-content">
         <h2>Log In!</h2>
         <form autoComplete="off" onSubmit={handleSubmit}>

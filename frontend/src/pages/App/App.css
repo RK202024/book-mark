@@ -1,24 +1,18 @@
-#react-app {
-  display: grid;
-  grid-template-rows: auto auto;
-  min-height: 100vh;
-}
-
-/* Nav bar styles */
 .nav-bar {
-  position: fixed;
+  position: relative; 
   top: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: #002f4b; 
   z-index: 3;
 }
 
+/* Nav-bar button styles */
 .nav-bar button {
-  background-color: transparent; /* Transparent background */
+  background-color: transparent; 
   color: white; /* Text color */
   border: 2px solid white; /* White border */
   border-radius: 8px; /* Rounded corners */
@@ -32,87 +26,21 @@
 
 .nav-bar button:hover {
   background-color: white;
-  color: #004aad;
+  color: #002f4b; 
 }
 
-#main-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+/* Page-specific content margin */
+#sign-up-page #app-content,
+#log-in-page #app-content,
+#club-detail-page #app-content,
+#club-index-page #app-content {
+  margin-top: 20px; 
 }
 
-/* Sign Up Page Styles */
-#sign-up-page {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('/images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-#sign-up-page .nav-bar {
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 15px;
-}
-
-#sign-up-page #app-content {
-  margin-top: 60px; 
-}
-
-#sign-up-page .error-message {
-  color: red; /* Error message color */
-}
-
-/* Club Detail Page Styles */
-#club-detail-page {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('/images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-/* Log In Page Styles */
-#log-in-page {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('/images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-/* Club Index Page Styles */
+/* Page styles */
+#sign-up-page,
+#log-in-page,
+#club-detail-page,
 #club-index-page {
   height: 100vh;
   width: 100vw;
@@ -173,6 +101,10 @@
   width: 100%;
   max-width: 1200px;
   padding: 20px;
+}
+
+.updates {
+  /* Keeping here for specific styles for updates section if needed */
 }
 
 .button-container {
