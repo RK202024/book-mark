@@ -16,3 +16,8 @@ export function getById(id) {
 export function getAll() {
   return sendRequest(BASE_URL);
 }
+
+// Join a club
+export function joinClub(clubId, userId) {
+  return sendRequest(`${BASE_URL}/${clubId}/join`, 'POST', { userId });
+}

@@ -1,21 +1,36 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as clubsAPI from '../../services/clubsAPI';
+import * as authService from '../../services/authService';
 
 export default function ClubDetailsPage() {
-  const { id } = useParams(); // Get the club ID from the URL
+  const { id } = useParams();
   const [club, setClub] = useState(null);
+  const [isMember, setIsMember] = useState(false);
+  const navigate = useNavigate();
 
-  // Fetch the club details when the page loads
   useEffect(() => {
     async function getClubDetails() {
-      const club = await clubsAPI.getById(id); // Fetch club details by ID
+      const club = await clubsAPI.getById(id);
       setClub(club);
+      const user = authService.getUser();
+      if (user) {
+        setIsMember(club.members.some(member => member._id === user._id));
+      }
     }
     getClubDetails();
   }, [id]);
 
-  if (!club) return <h2>Loading...</h2>; // Show loading message while data is fetched
+  async function handleJoin() {
+    const user = authService.getUser();
+    if (user) {
+      await clubsAPI.joinClub(id, user._id);
+      setIsMember(true);
+      navigate(`/clubs/${id}/welcome`);
+    }
+  }
+
+  if (!club) return <h2>Loading...</h2>;
 
   return (
     <div id="club-index-page"> 
@@ -28,6 +43,9 @@ export default function ClubDetailsPage() {
             <li key={member._id}>{member.name}</li>
           ))}
         </ul>
+        {!isMember && (
+          <button onClick={handleJoin}>Join Club</button>
+        )}
       </div>
     </div>
   );

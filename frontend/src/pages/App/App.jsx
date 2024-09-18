@@ -8,17 +8,15 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import ClubIndexPage from '../ClubIndexPage/ClubIndexPage'; 
 import ClubDetailsPage from '../ClubDetailsPage/ClubDetailsPage'; 
+import ClubWelcomePage from '../ClubWelcomePage/ClubWelcomePage';
 
 function App() {
   const [user, setUser] = useState(getUser());
 
   useEffect(() => {
     const loggedInUser = getUser();
-    console.log('User from authService:', loggedInUser); 
     setUser(loggedInUser);
   }, []);
-
-  console.log('Current user state:', user); 
 
   return (
     <main id="react-app">
@@ -30,6 +28,7 @@ function App() {
             <>
               <Route path="/clubs" element={<ClubIndexPage />} /> 
               <Route path="/clubs/:id" element={<ClubDetailsPage />} />
+              <Route path="/clubs/:id/welcome" element={<ClubWelcomePage />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (
