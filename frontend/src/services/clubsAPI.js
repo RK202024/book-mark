@@ -27,6 +27,12 @@ export function deleteClub(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
+// Get books for a specific club
+export function getBooks(clubId) {
+  return sendRequest(`/api/books/${clubId}`);
+}
+
+
 // Suggest a book for a specific club
 export function suggestBook(clubId, bookData) {
   return sendRequest(`${BASE_URL}/${clubId}/suggest`, 'POST', bookData);

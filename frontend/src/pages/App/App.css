@@ -46,7 +46,8 @@ button:hover, .nav-bar button:hover {
 #club-details-page,
 #club-index-page,
 #home-page,
-#goodbye-page {
+#goodbye-page,
+#club-welcome-page {
   height: 100vh;
   width: 100vw;
   background-size: cover;
@@ -62,7 +63,7 @@ button:hover, .nav-bar button:hover {
   padding: 0;
 }
 
-#sign-up-page, #log-in-page, #club-details-page, #club-index-page, #goodbye-page {
+#sign-up-page, #log-in-page, #club-details-page, #club-index-page, #goodbye-page, #club-welcome-page {
   background-image: url('/images/background.png');
 }
 
@@ -106,4 +107,62 @@ button:hover, .nav-bar button:hover {
 
 .button-container {
   gap: 20px; 
+}
+
+/* Suggest a Book Section */
+.suggest-book-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.book-input {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.book-input::placeholder {
+  color: white;
+}
+
+.suggest-book-button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.suggest-book-button:hover {
+  background-color: #005f73;
+}
+
+/* Reading list button styles */
+.reading-list-button {
+  background-color: transparent;
+  color: white; /* Text color */
+  border: 2px solid white; /* White border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 20px;
+  font-size: 18px; /* Larger text */
+  font-weight: bold; /* Bold text */
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 3;
+  pointer-events: auto; /* Ensure buttons are clickable */
+}
+
+.reading-list-button:hover {
+  background-color: white;
+  color: #002f4b;
 }

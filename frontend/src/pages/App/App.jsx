@@ -12,21 +12,10 @@ import ClubWelcomePage from '../ClubWelcomePage/ClubWelcomePage';
 import GoodbyePage from '../GoodbyePage/GoodbyePage';
 
 function App() {
-  const [user, setUser] = useState(null); // Default to null to handle loading state
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [user, setUser] = useState(getUser()); // Initialize with getUser directly
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const loggedInUser = await getUser();
-        setUser(loggedInUser);
-      } catch (error) {
-        console.error('Error fetching user:', error);
-      } finally {
-        setLoading(false); // Always set loading to false
-      }
-    };
-    fetchUser();
+    setUser(getUser()); // Set the user on component mount
   }, []);
 
   return (
@@ -35,14 +24,11 @@ function App() {
       <section id="main-section">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {loading ? (
-            // Show loading message or spinner for routes that depend on user state
-            <Route path="*" element={<div>Loading...</div>} />
-          ) : user ? (
+          {user ? (
             // Authenticated routes
             <>
               <Route path="/clubs" element={<ClubIndexPage />} /> 
-              <Route path="/clubs/:id" element={<ClubDetailsPage />} />
+              <Route path="/clubs/:id" element={<ClubDetailsPage user={user} setUser={setUser} />} />
               <Route path="/clubs/:id/welcome" element={<ClubWelcomePage />} />
               <Route path="/clubs/goodbye" element={<GoodbyePage />} />
               <Route path="*" element={<Navigate to="/" />} />

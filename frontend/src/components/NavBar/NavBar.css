@@ -1,39 +1,33 @@
 .NavBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
-  background-color: #002f4b; 
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
   padding: 10px 20px;
-  z-index: 3; 
+  background-color: #002f4b;
 }
 
-.NavBar span {
-  color: white;
+.nav-left {
+  display: flex;
+  align-items: center;
 }
 
-.NavBar a {
-  color: white;
+.nav-right {
+  margin-left: auto; 
+}
+
+.NavBar-button {
   background-color: transparent;
-  border: none; 
+  color: white;
+  border: 2px solid white;
   border-radius: 8px;
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.NavBar a:hover {
+.NavBar-button:hover {
   background-color: white;
-  color: #002f4b; 
-}
-
-/* Hide navbar on home page */
-#home-page .NavBar {
-  display: none;
+  color: #002f4b;
 }

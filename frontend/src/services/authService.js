@@ -27,7 +27,6 @@ export function getUser() {
       if (payload.exp * 1000 < Date.now()) {
         // Token has expired
         localStorage.removeItem('token');
-        console.log('Token expired, removing token.'); //CONSOLE LOG
         return null;
       }
       console.log('User retrieved from token:', payload.user);
