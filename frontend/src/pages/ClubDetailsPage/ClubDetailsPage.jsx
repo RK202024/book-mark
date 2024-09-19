@@ -15,13 +15,17 @@ export default function ClubDetailsPage({ user, setUser }) {
   useEffect(() => {
     async function getClubDetails() {
       const clubData = await clubsAPI.getById(id);
+      console.log('hi');
+      console.log(clubData);
       setClub(clubData);
-      const user = authService.getUser();
+      const user = await authService.getUser();
+      console.log(user);
       if (user) {
         setIsMember(clubData.members.some(member => member._id === user._id));
       }
       // Fetch books for the club
       const books = await clubsAPI.getBooks(id);
+      console.log(books);
       setReadingList(books);
     }
     getClubDetails();

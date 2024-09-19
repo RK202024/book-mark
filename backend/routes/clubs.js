@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const clubsCtrl = require('../controllers/clubs');
 const ensureLoggedIn = require('../middleware/ensureLoggedIn');
+const Book = require('../models/Book');
 
 // POST /api/clubs/create
 router.post('/create', ensureLoggedIn, clubsCtrl.create);
@@ -28,6 +29,7 @@ router.post('/:id/suggest', ensureLoggedIn, clubsCtrl.suggestBook);
 router.get('/:id/books', ensureLoggedIn, async (req, res) => {
   try {
     const books = await Book.find({ clubId: req.params.id });
+    console.log(books);
     res.json(books);
   } catch (err) {
     res.status(500).json({ message: err.message });

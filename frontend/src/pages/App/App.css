@@ -24,7 +24,7 @@ button, .nav-bar button, .home-button {
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   z-index: 3;
-  pointer-events: auto; /* Ensure buttons are clickable */
+  pointer-events: auto; 
 }
 
 button:hover, .nav-bar button:hover {
@@ -159,7 +159,7 @@ button:hover, .nav-bar button:hover {
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   z-index: 3;
-  pointer-events: auto; /* Ensure buttons are clickable */
+  pointer-events: auto; 
 }
 
 .reading-list-button:hover {

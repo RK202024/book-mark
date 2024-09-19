@@ -29,7 +29,7 @@ export function deleteClub(id) {
 
 // Get books for a specific club
 export function getBooks(clubId) {
-  return sendRequest(`/api/books/${clubId}`);
+  return sendRequest(`${BASE_URL}/${clubId}/books`);
 }
 
 
@@ -42,4 +42,3 @@ export function suggestBook(clubId, bookData) {
 export function leaveClub(clubId, userId) {
   return sendRequest(`${BASE_URL}/${clubId}/leave`, 'POST', { userId });
 }
-

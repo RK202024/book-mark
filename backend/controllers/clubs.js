@@ -31,12 +31,25 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const club = await Club.findById(req.params.id).populate('owner members'); 
+    // Populate 'owner', 'members', and 'readingList' fields
+    const club = await Club.findById(req.params.id)
+      .populate('owner')
+      .populate('members')
+      .populate({
+        path: 'readingList',
+        model: 'Book', // Populate the readingList with Book model data
+      });
+
+    if (!club) {
+      return res.status(404).json({ message: 'Club not found' });
+    }
+
     res.json(club);
   } catch (err) {
     res.status(400).json({ message: 'Error fetching club' });
   }
 }
+
 
 async function joinClub(req, res) {
   try {
@@ -81,22 +94,24 @@ async function suggestBook(req, res) {
     const newBook = new Book({
       title,
       author,
-      clubId: id,
+      clubId: id,  
     });
+
     await newBook.save();
 
-    // Add the new book to the club's books array
+    // Add the new book to the club's readingList array
     const updatedClub = await Club.findByIdAndUpdate(
       id,
-      { $push: { books: newBook._id } },
+      { $push: { readingList: newBook._id } }, 
       { new: true }
-    ).populate('books');
+    ).populate('readingList');  // Populate the readingList to return updated data
 
     res.status(201).json(newBook);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 }
+
 
 async function leaveClub(req, res) {
   try {
@@ -116,4 +131,3 @@ async function leaveClub(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
-
