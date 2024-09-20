@@ -30,7 +30,7 @@ export default function NavBar({ user, setUser, isMember, club, setClub, setIsMe
   
     setClub(null);
 
-    navigate('/clubs'); // Navigate to GoodbyePage
+    navigate('/clubs'); 
   }
   
   

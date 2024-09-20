@@ -74,7 +74,7 @@ export default function SignUpPage({ setUser }) {
             SIGN UP
           </button>
         </form>
-        <p className="error-message">&nbsp;{errorMsg}</p>
+        <p className="error-message">{errorMsg}</p>
       </div>
     </div>
   );

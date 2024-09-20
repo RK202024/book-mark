@@ -168,45 +168,45 @@ button:hover, .nav-bar button:hover {
 }
 
 #club-index-title {
-  font-size: 36px; /* Adjust this value as needed */
+  font-size: 36px; 
   font-weight: bold;
-  color: white; /* Optional: change the color */
+  color: white; 
   margin: 10px 0;
 }
 
 
 .club-list {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  gap: 20px; /* Add space between items */
+  flex-wrap: wrap; 
+  gap: 20px; 
 }
 
-/* Club containers - transparent background */
-/* Club containers - transparent background */
+/* Club containers */
+
 .club-item {
-  flex: 0 0 45%; /* Each item takes up about 45% of the container width */
+  flex: 0 0 45%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 1px solid white; /* Optional border for visual separation */
-  border-radius: 8px; /* Optional rounded corners */
-  background-color: transparent; /* Make background transparent */
+  border: 1px solid white; 
+  border-radius: 8px; 
+  background-color: transparent; 
   overflow: hidden;
 }
 
 .club-name {
-  font-size: 20px; /* Increase font size of club names */
+  font-size: 20px; 
   white-space: nowrap; /* Prevent wrapping */
   text-overflow: ellipsis; /* Handle overflow with ellipsis */
   overflow: hidden; /* Prevent expanding the container */
 }
 
-/* View Details button with lighter navbar color and hover effect */
+/* View Details button */
 .club-item button {
-  font-size: 20px; /* Smaller font size for the "View Details" button */
-  padding: 5px 10px; /* Adjust padding to match the smaller font */
-  background-color: #008CBA; /* Lighter shade of blue */
+  font-size: 20px; 
+  padding: 5px 10px; 
+  background-color: #008CBA; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -215,11 +215,11 @@ button:hover, .nav-bar button:hover {
 }
 
 .club-item button:hover {
-  background-color: white; /* Inverse background on hover */
-  color: #008CBA; /* Inverse text color on hover */
-  border: none; /* Ensure no border */
-  outline: none; /* Remove any outline that might be appearing */
-  box-shadow: none; /* Ensure no shadow or border effect appears */
+  background-color: white; 
+  color: #008CBA; 
+  border: none; 
+  outline: none; 
+  box-shadow: none; 
 }
 
 .create-club-container {
@@ -227,25 +227,25 @@ button:hover, .nav-bar button:hover {
   align-items: center;
   gap: 20px;
   padding: 0 5px; /* No padding on top/bottom, small padding on left/right */
-  border: 2px solid white; /* Ensure the border is white */
-  border-radius: 8px; /* Optional: rounded corners */
-  background-color: transparent; /* Remove background */
-  box-shadow: none; /* Remove any potential shadow */
+  border: 2px solid white; 
+  border-radius: 8px; 
+  background-color: transparent; 
+  box-shadow: none; 
 }
 
 #create-club-form {
   display: flex;
   align-items: center;
   gap: 0px; /* Space between input and button */
-  border: none; /* Remove any border on the form itself */
-  background-color: transparent; /* Ensure form background is transparent */
+  border: none; 
+  background-color: transparent; 
 }
 
 #create-club-form input {
   padding: 10px;
   flex: 1;
-  border: 1px solid white; /* Ensure the input border is white */
-  background-color: transparent; /* Ensure input has no background */
+  border: 1px solid white; 
+  background-color: transparent; 
   color: white; /* Input text color */
 }
 
