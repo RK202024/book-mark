@@ -43,9 +43,9 @@
 
 ### ***Screenshots***
 
-![Home](./public/images/home.png)
-![Club Index](./public/images/club-index.png)
-![Leave Club](./public/images/leave-club.png)
+![Home]<img src="./screenshots/home.png">
+![Club Index]<img src="./screenshots/club-index.png">
+![Leave Club]<img src="./screenshots/leave-club.png">
 
 ***
 
