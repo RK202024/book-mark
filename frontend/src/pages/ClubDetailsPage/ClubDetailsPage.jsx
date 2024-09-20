@@ -1,29 +1,32 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import * as clubsAPI from '../../services/clubsAPI';
-import * as authService from '../../services/authService';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import * as clubsAPI from "../../services/clubsAPI";
+import * as authService from "../../services/authService";
 
-export default function ClubDetailsPage({ user, setUser, setIsMember, isMember, club, setClub }) {
+export default function ClubDetailsPage({
+  user,
+  setUser,
+  setIsMember,
+  isMember,
+  club,
+  setClub,
+}) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [readingList, setReadingList] = useState([]); // List of suggested books
-  const [bookTitle, setBookTitle] = useState('');
-  const [bookAuthor, setBookAuthor] = useState('');
+  const [readingList, setReadingList] = useState([]);
+  const [bookTitle, setBookTitle] = useState("");
+  const [bookAuthor, setBookAuthor] = useState("");
 
   useEffect(() => {
     async function getClubDetails() {
       const clubData = await clubsAPI.getById(id);
-      console.log('hi');
-      console.log(clubData);
       setClub(clubData);
       const user = await authService.getUser();
-      console.log(user);
       if (user) {
-        setIsMember(clubData.members.some(member => member._id === user._id));
+        setIsMember(clubData.members.some((member) => member._id === user._id));
       }
       // Fetch books for the club
       const books = await clubsAPI.getBooks(id);
-      console.log(books);
       setReadingList(books);
     }
     getClubDetails();
@@ -38,20 +41,24 @@ export default function ClubDetailsPage({ user, setUser, setIsMember, isMember, 
     const newBook = { title: bookTitle, author: bookAuthor };
     await clubsAPI.suggestBook(id, newBook);
     setReadingList([...readingList, newBook]);
-    setBookTitle(''); // Reset form input
-    setBookAuthor(''); // Reset form input
+    setBookTitle("");
+    setBookAuthor("");
   }
 
   if (!club) return <h2>Loading...</h2>;
 
+  const isOwner = club.owner && user && club.owner._id === user._id;
+
   return (
     <div id="club-details-page">
-      <div id="app-content">
-        <h1>{club.name}</h1>
-        <p>Manager: {club.owner ? club.owner.name : 'Unknown'}</p>
-        <p>Members: {club.members ? club.members.length : 0}</p>
+      <div id="app-content" style={{ marginTop: "-200px" }}>
+        <h1 id="club-index-title">{club.name}</h1>
+        <p className="manager-members-center">
+          <strong>Manager:</strong> {club.owner ? club.owner.name : "Unknown"} /
+          <strong> Members:</strong> {club.members ? club.members.length : 0}
+        </p>
 
-        {!isMember && (
+        {!isMember && !isOwner && (
           <button onClick={handleJoinClub} className="NavBar-button">
             Join Club
           </button>
@@ -59,28 +66,31 @@ export default function ClubDetailsPage({ user, setUser, setIsMember, isMember, 
 
         {isMember && (
           <>
-            <h2>Reading List</h2>
-            <ul>
+            <h2 style={{ textDecoration: "underline" }}>Reading List</h2>
+            <ul className="reading-list">
               {readingList.map((book, index) => (
                 <li key={index}>
                   {book.title} by {book.author}
                 </li>
               ))}
             </ul>
+
             <h3>Suggest a Book</h3>
             <input
               type="text"
+              className="book-input"
               value={bookTitle}
               onChange={(e) => setBookTitle(e.target.value)}
               placeholder="Book Title"
             />
             <input
               type="text"
+              className="book-input"
               value={bookAuthor}
               onChange={(e) => setBookAuthor(e.target.value)}
               placeholder="Book Author"
             />
-            <button onClick={handleSuggestBook} className="NavBar-button">
+            <button onClick={handleSuggestBook} className="suggest-book-button">
               Suggest Book
             </button>
           </>

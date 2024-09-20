@@ -1,9 +1,13 @@
 .NavBar {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: #002f4b;
+}
+
+#sign-up-page .NavBar {
+  display: none;
 }
 
 .NavBar-button {
@@ -22,5 +26,3 @@
   background-color: white;
   color: #002f4b;
 }
-
-

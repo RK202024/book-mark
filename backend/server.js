@@ -3,7 +3,6 @@ const express = require('express');
 const logger = require('morgan');
 const app = express();
 
-
 // Process the secrets/config vars in .env
 require('dotenv').config();
 
@@ -11,7 +10,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+  console.info(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
 app.use(logger('dev'));
@@ -22,7 +21,7 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(express.json());
 
 // Middleware to check the request's headers for a JWT and
-// verify that it's a valid.  If so, it will assign the
+// verify that it's valid. If so, it will assign the
 // user object in the JWT's payload to req.user
 app.use(require('./middleware/checkToken'));
 
@@ -33,21 +32,13 @@ const ensureLoggedIn = require('./middleware/ensureLoggedIn');
 // Club routes for managing API calls
 app.use('/api/clubs', require('./routes/clubs')); 
 
-
-
-// Remember to use ensureLoggedIn middleware when mounting
-// routes and/or within the route modules to protect routes
-// that require a logged in user either
-// For example:
-// app.use('/api/posts', ensureLoggedIn, require('./routes/posts'));
-
 // Use a "catch-all" route to deliver the frontend's production index.html
 app.get('*', function (req, res) {
-  console.log(__dirname);
+  console.info('Serving the frontend from:', __dirname);
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`The express app is listening on ${port}`);
+  console.info(`Express app is listening on port ${port}`);
 });

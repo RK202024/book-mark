@@ -29,7 +29,6 @@ router.post('/:id/suggest', ensureLoggedIn, clubsCtrl.suggestBook);
 router.get('/:id/books', ensureLoggedIn, async (req, res) => {
   try {
     const books = await Book.find({ clubId: req.params.id });
-    console.log(books);
     res.json(books);
   } catch (err) {
     res.status(500).json({ message: err.message });

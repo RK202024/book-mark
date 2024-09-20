@@ -1,8 +1,8 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import * as clubsAPI from '../../services/clubsAPI';
-import * as authService from '../../services/authService';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import * as clubsAPI from "../../services/clubsAPI";
+import * as authService from "../../services/authService";
 
 export default function ClubWelcomePage() {
   const { id } = useParams();
@@ -31,7 +31,9 @@ export default function ClubWelcomePage() {
 
   return (
     <div id="club-welcome-page">
-      <h1>Welcome to the {club.name}, {user.name}!</h1>
+      <h1>
+        Welcome to the {club.name}, {user.name}!
+      </h1>
       <p>We are excited to read with you! Enjoy your time here!</p>
 
       <button onClick={handleReadingList} className="reading-list-button">

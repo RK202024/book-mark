@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { getUser } from "../../services/authService";
 import "./App.css";
 import NavBar from "../../components/NavBar/NavBar";
@@ -16,13 +16,27 @@ function App() {
   const [club, setClub] = useState(null);
   const [isMember, setIsMember] = useState(false);
 
+  const location = useLocation(); // Get the current route
+
   useEffect(() => {
     setUser(getUser()); // Set the user on component mount
   }, []);
 
+  // Determine if the navbar should be hidden (on signup page)
+  const hideNavBar = location.pathname === "/signup";
+
   return (
     <main id="react-app">
-      <NavBar user={user} setUser={setUser} setIsMember={setIsMember} isMember={isMember} setClub={setClub} club={club} />
+      {!hideNavBar && ( // Conditionally render the NavBar
+        <NavBar
+          user={user}
+          setUser={setUser}
+          setIsMember={setIsMember}
+          isMember={isMember}
+          setClub={setClub}
+          club={club}
+        />
+      )}
       <section id="main-section">
         <Routes>
           <Route path="/" element={<HomePage />} />

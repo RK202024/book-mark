@@ -1,11 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function GoodbyePage() {
   const navigate = useNavigate();
 
   function handleLogout() {
     authService.logout(); // Logs the user out
-    navigate('/'); // Redirect to Home Page
+    navigate("/"); // Redirect to Home Page
   }
 
   return (

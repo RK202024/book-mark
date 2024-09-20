@@ -1,39 +1,41 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
 
 export default function LogInPage({ setUser }) {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
-  const navigate = useNavigate(); 
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       const user = await authService.logIn(formData);
       setUser(user);
-      navigate('/clubs'); 
+      navigate("/clubs");
     } catch (err) {
-      setErrorMsg('Log In Failed - Try Again');
+      setErrorMsg("Log In Failed - Try Again");
     }
   }
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-    setErrorMsg('');
+    setErrorMsg("");
   }
 
   function handleHomeClick() {
-    navigate('/'); 
+    navigate("/");
   }
 
   return (
-    <div id="log-in-page"> 
+    <div id="log-in-page">
       <div className="nav-bar">
-        <button className="home-button" onClick={handleHomeClick}>Home</button>
+        <button className="home-button" onClick={handleHomeClick}>
+          Home
+        </button>
       </div>
       <div id="app-content">
         <h2>Log In!</h2>

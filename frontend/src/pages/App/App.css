@@ -1,18 +1,20 @@
 /* Nav-bar styles */
 .nav-bar {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #002f4b; 
+  background-color: #002f4b;
   z-index: 3;
 }
 
 /* General button styles */
-button, .nav-bar button, .home-button {
+button,
+.nav-bar button,
+.home-button {
   background-color: transparent;
   color: white; /* Text color */
   border: 2px solid white; /* White border */
@@ -24,20 +26,17 @@ button, .nav-bar button, .home-button {
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   z-index: 3;
-  pointer-events: auto; 
+  pointer-events: auto;
 }
 
-button:hover, .nav-bar button:hover {
+button:hover,
+.nav-bar button:hover {
   background-color: white;
   color: #002f4b;
 }
 
-/* Page-specific content margin */
-#sign-up-page #app-content,
-#log-in-page #app-content,
-#club-details-page #app-content,
-#club-index-page #app-content {
-  margin-top: 20px; 
+#club-details-page #app-content {
+  margin-top: 10px;
 }
 
 /* Shared page styles */
@@ -63,12 +62,17 @@ button:hover, .nav-bar button:hover {
   padding: 0;
 }
 
-#sign-up-page, #log-in-page, #club-details-page, #club-index-page, #goodbye-page, #club-welcome-page {
-  background-image: url('/images/background.png');
+#sign-up-page,
+#log-in-page,
+#club-details-page,
+#club-index-page,
+#goodbye-page,
+#club-welcome-page {
+  background-image: url("/images/background.png");
 }
 
 #home-page {
-  background-image: url('/images/homepage.png');
+  background-image: url("/images/homepage.png");
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -92,21 +96,6 @@ button:hover, .nav-bar button:hover {
   position: absolute;
   bottom: 30px;
   z-index: 2;
-}
-
-/* Goodbye page styles */
-#goodbye-page h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-#goodbye-page p {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.button-container {
-  gap: 20px; 
 }
 
 /* Suggest a Book Section */
@@ -133,7 +122,7 @@ button:hover, .nav-bar button:hover {
 }
 
 .suggest-book-button {
-  background-color: #008CBA;
+  background-color: #008cba;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -146,135 +135,73 @@ button:hover, .nav-bar button:hover {
   background-color: #005f73;
 }
 
-/* Reading list button styles */
-.reading-list-button {
-  background-color: transparent;
-  color: white; /* Text color */
-  border: 2px solid white; /* White border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 10px 20px;
-  font-size: 18px; /* Larger text */
-  font-weight: bold; /* Bold text */
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  z-index: 3;
-  pointer-events: auto; 
+/* Reading list styles */
+.reading-list {
+  column-count: 3;
+  column-gap: 40px;
+  list-style-type: disc; /* Bullet points */
+  padding-left: 20px; /* Padding to display bullet points properly */
 }
 
-.reading-list-button:hover {
-  background-color: white;
-  color: #002f4b;
+/* Ensure no extra space between list items */
+.reading-list li {
+  margin-bottom: 0;
 }
 
+/* Club Index Page Title */
 #club-index-title {
-  font-size: 36px; 
+  font-size: 36px;
   font-weight: bold;
-  color: white; 
+  color: white;
   margin: 10px 0;
 }
 
-
+/* Club list styling */
 .club-list {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 20px; 
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 /* Club containers */
-
 .club-item {
-  flex: 0 0 45%; 
+  flex: 0 0 45%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 1px solid white; 
-  border-radius: 8px; 
-  background-color: transparent; 
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: transparent;
   overflow: hidden;
 }
 
+/* Club name styling */
 .club-name {
-  font-size: 20px; 
-  white-space: nowrap; /* Prevent wrapping */
+  font-size: 20px;
+  white-space: nowrap;
   text-overflow: ellipsis; /* Handle overflow with ellipsis */
   overflow: hidden; /* Prevent expanding the container */
+  padding-right: 10px; /* Add a bit of space between names */
 }
 
 /* View Details button */
 .club-item button {
-  font-size: 20px; 
-  padding: 5px 10px; 
-  background-color: #008CBA; 
+  font-size: 20px;
+  padding: 5px 10px;
+  background-color: #008cba;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .club-item button:hover {
-  background-color: white; 
-  color: #008CBA; 
-  border: none; 
-  outline: none; 
-  box-shadow: none; 
+  background-color: white;
+  color: #008cba;
 }
 
-.create-club-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0 5px; /* No padding on top/bottom, small padding on left/right */
-  border: 2px solid white; 
-  border-radius: 8px; 
-  background-color: transparent; 
-  box-shadow: none; 
-}
-
-#create-club-form {
-  display: flex;
-  align-items: center;
-  gap: 0px; /* Space between input and button */
-  border: none; 
-  background-color: transparent; 
-}
-
-#create-club-form input {
-  padding: 10px;
-  flex: 1;
-  border: 1px solid white; 
-  background-color: transparent; 
-  color: white; /* Input text color */
-}
-
-#create-club-form input::placeholder {
-  color: white; /* Placeholder text color */
-}
-
-#create-club-form button {
-  padding: 5px 10px; /* Add more padding */
-  font-size: 19px; /* Slightly smaller button font size */
-  background-color: #008CBA;
-  color: white;
-  border: none; /* No border on the button */
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 15px;
-}
-
-#create-club-form button:hover {
-  background-color: white; /* Inverse background on hover */
-  color: #008CBA; /* Inverse text color on hover */
-  border: none;
-}
-
-.create-club-label {
-  font-size: 20px; /* Larger font size for the Create Club label */
-  margin-right: 10px; /* Space between label and input */
-}
-
+/* Sort container */
 .sort-container {
   display: flex;
   align-items: center; /* Align label and dropdown vertically in the center */
@@ -282,7 +209,7 @@ button:hover, .nav-bar button:hover {
 }
 
 .sort-container label {
-  font-size: 25px; /* Increase the font size for the "Sort by" text */
+  font-size: 25px;
   margin-right: 10px; /* Space between the label and the dropdown */
 }
 
@@ -291,6 +218,72 @@ button:hover, .nav-bar button:hover {
   font-size: 17px;
 }
 
+/* Create Club Form */
+#create-club-form {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Space between input and button */
+  border: none;
+  background-color: transparent;
+}
+
+#create-club-form input {
+  padding: 10px;
+  flex: 1;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white; /* Input text color */
+}
+
+#create-club-form input::placeholder {
+  color: white;
+}
+
+#create-club-form button {
+  padding: 5px 10px;
+  font-size: 19px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+#create-club-form button:hover {
+  background-color: white;
+  color: #008cba;
+  border: none;
+}
+
+.create-club-label {
+  font-size: 20px;
+  margin-right: 10px; /* Space between label and input */
+}
+
+/* Manager and Members containers side-by-side */
+.manager-members-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between the containers */
+  margin-top: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.manager-container,
+.members-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  padding: 2px 5px 2px 10px;
+  background-color: transparent;
+  border-radius: 8px;
+  width: 48%;
+}
+
+/* Error message styling */
 .error-message {
   color: red;
   margin-top: 10px;

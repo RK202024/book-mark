@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function CreateClubForm({ handleAddClub }) {
   const [formData, setFormData] = useState({
-    name: '',
+    name: "",
   });
 
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-    setErrorMsg('');
+    setErrorMsg("");
   }
 
   async function handleSubmit(evt) {
@@ -17,14 +17,16 @@ export default function CreateClubForm({ handleAddClub }) {
     try {
       handleAddClub(formData);
     } catch (err) {
-      setErrorMsg('Failed to create club - Try again');
+      setErrorMsg("Failed to create club - Try again");
     }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit} id="create-club-form">
-        <label htmlFor="name" className="create-club-label">Create Club:</label>
+        <label htmlFor="name" className="create-club-label">
+          Create Club:
+        </label>
         <div className="input-button-container">
           <input
             type="text"
@@ -35,7 +37,9 @@ export default function CreateClubForm({ handleAddClub }) {
             placeholder="Club Name"
             required
           />
-          <button type="submit" className="create-club-button">Create Club</button>
+          <button type="submit" className="create-club-button">
+            Create Club
+          </button>
         </div>
       </form>
       <p className="error-message">{errorMsg}</p>

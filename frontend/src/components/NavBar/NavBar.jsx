@@ -1,42 +1,47 @@
-import { useLocation, useNavigate } from 'react-router-dom'; 
-import * as authService from '../../services/authService';
-import './NavBar.css';
-import * as clubsAPI from '../../services/clubsAPI';
+import { useLocation, useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
+import "./NavBar.css";
+import * as clubsAPI from "../../services/clubsAPI";
 
-export default function NavBar({ user, setUser, isMember, club, setClub, setIsMember}) {
+export default function NavBar({
+  user,
+  setUser,
+  isMember,
+  club,
+  setClub,
+  setIsMember,
+}) {
   const location = useLocation();
   const navigate = useNavigate();
 
   function handleLogOut() {
     authService.logOut();
     setUser(null);
-    navigate('/'); 
+    navigate("/");
   }
 
   function handleLeaveClub() {
-    const updatedClub = clubsAPI.leaveClub( club._id, user._id );
-   
+    const updatedClub = clubsAPI.leaveClub(club._id, user._id);
+
     setIsMember(false);
-  
+
     setClub(updatedClub);
 
-    navigate('/clubs/goodbye'); // Navigate to GoodbyePage
+    navigate("/clubs/goodbye"); // Navigate to GoodbyePage
   }
 
   function handleDeleteClub() {
-    const deletedClub = clubsAPI.deleteClub( club._id );
-   
+    const deletedClub = clubsAPI.deleteClub(club._id);
+
     setIsMember(false);
-  
+
     setClub(null);
 
-    navigate('/clubs'); 
+    navigate("/clubs");
   }
-  
-  
 
   // Hide the NavBar on the home page
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return null;
   }
 
@@ -53,7 +58,7 @@ export default function NavBar({ user, setUser, isMember, club, setClub, setIsMe
       </div>
 
       <div className="nav-center">
-        {user && (user._id === club?.owner?._id) && (
+        {user && user._id === club?.owner?._id && (
           <>
             <button onClick={handleDeleteClub} className="NavBar-button">
               Delete Club
@@ -74,4 +79,3 @@ export default function NavBar({ user, setUser, isMember, club, setClub, setIsMe
     </nav>
   );
 }
-

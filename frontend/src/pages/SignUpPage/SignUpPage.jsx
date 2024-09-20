@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService';
-import NavBar from '../../components/NavBar/NavBar'; 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
+import NavBar from "../../components/NavBar/NavBar";
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirm: '',
+    name: "",
+    email: "",
+    password: "",
+    confirm: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(evt) {
@@ -18,16 +18,15 @@ export default function SignUpPage({ setUser }) {
     try {
       const user = await authService.signUp(formData);
       setUser(user);
-      navigate('/clubs'); 
+      navigate("/clubs");
     } catch (err) {
-      console.log(err);
-      setErrorMsg('Sign Up Failed - Try Again');
+      setErrorMsg("Sign Up Failed - Try Again");
     }
   }
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-    setErrorMsg('');
+    setErrorMsg("");
   }
 
   const disable = formData.password !== formData.confirm;
@@ -35,7 +34,7 @@ export default function SignUpPage({ setUser }) {
   return (
     <div id="sign-up-page">
       <NavBar user={null} setUser={setUser} />
-      <div id="app-content" style={{ marginTop: '60px' }}>
+      <div id="app-content" style={{ marginTop: "60px" }}>
         <h2>Sign Up!</h2>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Name</label>
