@@ -16,7 +16,6 @@ export default function GoodbyePage() {
         <Link to="/clubs">
           <button>Clubs</button>
         </Link>
-        <button onClick={handleLogout}>Log Out</button>
       </div>
     </div>
   );

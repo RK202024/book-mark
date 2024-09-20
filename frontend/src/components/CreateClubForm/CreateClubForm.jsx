@@ -23,17 +23,20 @@ export default function CreateClubForm({ handleAddClub }) {
 
   return (
     <>
-      <h2>Create Club</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Club Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Create Club</button>
+      <form onSubmit={handleSubmit} id="create-club-form">
+        <label htmlFor="name" className="create-club-label">Create Club:</label>
+        <div className="input-button-container">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Club Name"
+            required
+          />
+          <button type="submit" className="create-club-button">Create Club</button>
+        </div>
       </form>
       <p className="error-message">{errorMsg}</p>
     </>

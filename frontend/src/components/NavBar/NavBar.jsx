@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom'; 
 import * as authService from '../../services/authService';
 import './NavBar.css';
+import * as clubsAPI from '../../services/clubsAPI';
 
-export default function NavBar({ user, setUser, isMember, handleLeaveClub }) {
+export default function NavBar({ user, setUser, isMember, club, setClub, setIsMember}) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -13,8 +14,26 @@ export default function NavBar({ user, setUser, isMember, handleLeaveClub }) {
   }
 
   function handleLeaveClub() {
+    const updatedClub = clubsAPI.leaveClub( club._id, user._id );
+   
+    setIsMember(false);
+  
+    setClub(updatedClub);
+
     navigate('/clubs/goodbye'); // Navigate to GoodbyePage
   }
+
+  function handleDeleteClub() {
+    const deletedClub = clubsAPI.deleteClub( club._id );
+   
+    setIsMember(false);
+  
+    setClub(null);
+
+    navigate('/clubs'); // Navigate to GoodbyePage
+  }
+  
+  
 
   // Hide the NavBar on the home page
   if (location.pathname === '/') {
@@ -33,6 +52,16 @@ export default function NavBar({ user, setUser, isMember, handleLeaveClub }) {
         )}
       </div>
 
+      <div className="nav-center">
+        {user && (user._id === club?.owner?._id) && (
+          <>
+            <button onClick={handleDeleteClub} className="NavBar-button">
+              Delete Club
+            </button>
+          </>
+        )}
+      </div>
+
       <div className="nav-right">
         {isMember && (
           <>
@@ -45,3 +74,4 @@ export default function NavBar({ user, setUser, isMember, handleLeaveClub }) {
     </nav>
   );
 }
+

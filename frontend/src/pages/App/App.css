@@ -48,10 +48,10 @@ button:hover, .nav-bar button:hover {
 #home-page,
 #goodbye-page,
 #club-welcome-page {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   display: flex;
@@ -165,4 +165,133 @@ button:hover, .nav-bar button:hover {
 .reading-list-button:hover {
   background-color: white;
   color: #002f4b;
+}
+
+#club-index-title {
+  font-size: 36px; /* Adjust this value as needed */
+  font-weight: bold;
+  color: white; /* Optional: change the color */
+  margin: 10px 0;
+}
+
+
+.club-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 20px; /* Add space between items */
+}
+
+/* Club containers - transparent background */
+/* Club containers - transparent background */
+.club-item {
+  flex: 0 0 45%; /* Each item takes up about 45% of the container width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid white; /* Optional border for visual separation */
+  border-radius: 8px; /* Optional rounded corners */
+  background-color: transparent; /* Make background transparent */
+  overflow: hidden;
+}
+
+.club-name {
+  font-size: 20px; /* Increase font size of club names */
+  white-space: nowrap; /* Prevent wrapping */
+  text-overflow: ellipsis; /* Handle overflow with ellipsis */
+  overflow: hidden; /* Prevent expanding the container */
+}
+
+/* View Details button with lighter navbar color and hover effect */
+.club-item button {
+  font-size: 20px; /* Smaller font size for the "View Details" button */
+  padding: 5px 10px; /* Adjust padding to match the smaller font */
+  background-color: #008CBA; /* Lighter shade of blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.club-item button:hover {
+  background-color: white; /* Inverse background on hover */
+  color: #008CBA; /* Inverse text color on hover */
+  border: none; /* Ensure no border */
+  outline: none; /* Remove any outline that might be appearing */
+  box-shadow: none; /* Ensure no shadow or border effect appears */
+}
+
+.create-club-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 5px; /* No padding on top/bottom, small padding on left/right */
+  border: 2px solid white; /* Ensure the border is white */
+  border-radius: 8px; /* Optional: rounded corners */
+  background-color: transparent; /* Remove background */
+  box-shadow: none; /* Remove any potential shadow */
+}
+
+#create-club-form {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Space between input and button */
+  border: none; /* Remove any border on the form itself */
+  background-color: transparent; /* Ensure form background is transparent */
+}
+
+#create-club-form input {
+  padding: 10px;
+  flex: 1;
+  border: 1px solid white; /* Ensure the input border is white */
+  background-color: transparent; /* Ensure input has no background */
+  color: white; /* Input text color */
+}
+
+#create-club-form input::placeholder {
+  color: white; /* Placeholder text color */
+}
+
+#create-club-form button {
+  padding: 5px 10px; /* Add more padding */
+  font-size: 19px; /* Slightly smaller button font size */
+  background-color: #008CBA;
+  color: white;
+  border: none; /* No border on the button */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+#create-club-form button:hover {
+  background-color: white; /* Inverse background on hover */
+  color: #008CBA; /* Inverse text color on hover */
+  border: none;
+}
+
+.create-club-label {
+  font-size: 20px; /* Larger font size for the Create Club label */
+  margin-right: 10px; /* Space between label and input */
+}
+
+.sort-container {
+  display: flex;
+  align-items: center; /* Align label and dropdown vertically in the center */
+  gap: 10px; /* Space between the label and dropdown */
+}
+
+.sort-container label {
+  font-size: 25px; /* Increase the font size for the "Sort by" text */
+  margin-right: 10px; /* Space between the label and the dropdown */
+}
+
+#sort {
+  padding: 5px;
+  font-size: 17px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }

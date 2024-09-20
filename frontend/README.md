@@ -1,8 +1,60 @@
-# React + Vite
+# ![Book Mark](./public/images/home.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Date: September 19, 2024
 
-Currently, two official plugins are available:
+## By: Reed Krosby
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###  [GitHub](https://github.com/RK202024/book-mark) 
+***
+
+### ***Description***
+#### Books Clubs for all! 
+
+####  [Book Mark](https://book-mark-f96c43b0d276.herokuapp.com/) Join a book club or create one and be the manager! Have access to user-generated reading lists and suggest books of your own! You can even delete a club if you are the manager whoa! 
+            
+
+ 
+***
+
+### ***Technologies Used***
+* HTML
+* CSS
+* JavaScript
+* Node
+* Photoshop
+
+
+***
+
+### ***Getting Started***
+
+#### 
+* ###  [Live platform](https://book-mark-f96c43b0d276.herokuapp.com/) 
+
+***
+
+### ***Future Updates***
+
+- member comments on books
+- member ratings on books
+- send club member notifications, eg new book suggestions 
+
+***
+
+### ***Screenshots***
+
+![Home](./public/images/home.png)
+![Club Index](./public/images/club-index.png)
+![Leave Club](./public/images/leave-club.png)
+
+***
+
+### ***Credits***
+#### Sam, Jan, Jim, Kevin, DeShae and Miriam
+* Google Gemini
+* Draw.io
+* Trello
+* Heroku
+* GitHUb 
+* OCLC (oclc.org)
+* Stack Overflow

@@ -6,15 +6,6 @@
   background-color: #002f4b;
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-right {
-  margin-left: auto; 
-}
-
 .NavBar-button {
   background-color: transparent;
   color: white;

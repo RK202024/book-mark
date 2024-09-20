@@ -3,11 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import * as clubsAPI from '../../services/clubsAPI';
 import * as authService from '../../services/authService';
 
-export default function ClubDetailsPage({ user, setUser }) {
+export default function ClubDetailsPage({ user, setUser, setIsMember, isMember, club, setClub }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [club, setClub] = useState(null);
-  const [isMember, setIsMember] = useState(false);
   const [readingList, setReadingList] = useState([]); // List of suggested books
   const [bookTitle, setBookTitle] = useState('');
   const [bookAuthor, setBookAuthor] = useState('');

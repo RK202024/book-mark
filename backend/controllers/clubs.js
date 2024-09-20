@@ -123,7 +123,7 @@ async function leaveClub(req, res) {
     if (!club) return res.status(404).json({ message: 'Club not found' });
 
     // Remove the user from the club's members array
-    club.members = club.members.filter(member => member.toString() !== userId);
+    club.members = club.members.filter(member => member._id.toString() !== userId);
     await club.save();
 
     res.status(200).json(club); // Return the updated club
